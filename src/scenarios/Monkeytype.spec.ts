@@ -45,7 +45,7 @@ test.describe('Monkeytype Login', () => {
     await monkeytypePage.validarLoginFalho();
   });
 
-  test.skip('Teste com ZeroStep - preencher campos de registro', async ({
+  test('Teste com ZeroStep - preencher campos de registro', async ({
     page,
   }) => {
     const aiArgs = { page, test };
