@@ -56,10 +56,19 @@ test.describe('Monkeytype Login', () => {
     } catch (e) {
       console.log('Banner de cookies não apareceu.');
     }
-    
-    await ai('Type "usuario_ai_teste" into the username field on the register form', aiArgs);
-    await ai('Type "email_ai@teste.com" into the email field on the register form', aiArgs);
-    await ai('Type "Senha@Forte123" into the password field on the register form', aiArgs);
+
+    await ai(
+      'Type "usuario_ai_teste" into the username field in the register section',
+      aiArgs
+    );
+    await ai(
+      'Type "email_ai@teste.com" into the email field in the register section',
+      aiArgs
+    );
+    await ai(
+      'Type "Senha@Forte123" into the password field in the register section',
+      aiArgs
+    );
 
     await expect(
       page.locator('.register.side input[placeholder="username"]')
@@ -67,5 +76,8 @@ test.describe('Monkeytype Login', () => {
     await expect(
       page.locator('.register.side input[placeholder="email"]')
     ).toHaveValue('email_ai@teste.com');
+    await expect(
+      page.locator('.register.side input[placeholder="password"]')
+    ).toHaveValue('Senha@Forte123');
   });
 });
