@@ -11,10 +11,6 @@ export default class MonkeytypePage extends BasePage {
     this.monkeytypeElements = new MonkeytypeElements(page);
   }
 
-  /**
-   * @param email
-   * @param senha
-   */
   async fazerLogin(email: string, senha: string): Promise<void> {
     try {
       await this.monkeytypeElements
@@ -50,5 +46,10 @@ export default class MonkeytypePage extends BasePage {
     await expect(this.monkeytypeElements.getUsuarioLogado()).toHaveText(
       username
     );
+  }
+
+  async validarLoginFalho(): Promise<void> {
+    await expect(this.monkeytypeElements.getMensagemErroLogin()).toBeVisible();
+    await expect(this.page).not.toHaveURL(/.*\/account/);
   }
 }

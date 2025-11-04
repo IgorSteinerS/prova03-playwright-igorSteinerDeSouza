@@ -26,4 +26,8 @@ export default class MonkeytypeElements extends BaseElements {
   getBotaoAceitarCookies(): Locator {
     return this.page.getByRole('button', { name: 'Accept' });
   }
+
+  getMensagemErroLogin(): Locator {
+    return this.page.locator('text=Incorrect email or password.');
+  }
 }
