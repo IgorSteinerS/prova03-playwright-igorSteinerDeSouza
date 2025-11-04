@@ -11,6 +11,10 @@ export default class MonkeytypePage extends BasePage {
     this.monkeytypeElements = new MonkeytypeElements(page);
   }
 
+  /**
+   * @param email
+   * @param senha
+   */
   async fazerLogin(email: string, senha: string): Promise<void> {
     try {
       await this.monkeytypeElements
@@ -27,6 +31,7 @@ export default class MonkeytypePage extends BasePage {
 
     await this.monkeytypeElements.getCampoEmail().click();
     await this.monkeytypeElements.getCampoEmail().fill(email);
+
     await expect(this.monkeytypeElements.getCampoEmail()).toHaveValue(email);
 
     await this.monkeytypeElements.getCampoSenha().click();
