@@ -28,6 +28,6 @@ export default class MonkeytypeElements extends BaseElements {
   }
 
   getMensagemErroLogin(): Locator {
-    return this.page.locator('text=Incorrect email or password.');
+    return this.page.getByText('Email/password is incorrect');
   }
 }
