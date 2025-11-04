@@ -13,10 +13,14 @@ export default class MonkeytypePage extends BasePage {
 
   async fazerLogin(email: string, senha: string): Promise<void> {
     try {
-      await this.monkeytypeElements.getBotaoAceitarCookies().click({ timeout: 5000 });
+      await this.monkeytypeElements
+        .getBotaoAceitarCookies()
+        .click({ timeout: 5000 });
       console.log('Banner de cookies aceito.');
 
-      await this.monkeytypeElements.getCampoEmail().waitFor({ state: 'visible', timeout: 5000 });
+      await this.monkeytypeElements
+        .getCampoEmail()
+        .waitFor({ state: 'visible', timeout: 5000 });
     } catch (error) {
       console.log('Banner de cookies não apareceu ou já foi aceito.');
     }
@@ -34,10 +38,12 @@ export default class MonkeytypePage extends BasePage {
 
   async validarLogin(username: string): Promise<void> {
     await this.page.waitForURL('**/account', { timeout: 10000 });
-    
+
     await expect(this.page).toHaveURL(/.*\/account/);
 
     await expect(this.monkeytypeElements.getUsuarioLogado()).toBeVisible();
-    await expect(this.monkeytypeElements.getUsuarioLogado()).toHaveText(username);
+    await expect(this.monkeytypeElements.getUsuarioLogado()).toHaveText(
+      username
+    );
   }
 }

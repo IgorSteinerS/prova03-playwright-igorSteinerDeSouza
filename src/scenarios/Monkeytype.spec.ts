@@ -21,9 +21,11 @@ test.describe('Monkeytype Login', () => {
 
   test('Fazer login com sucesso', async () => {
     if (!EMAIL_TESTE || !SENHA_TESTE) {
-      throw new Error('As variáveis de ambiente EMAIL_TESTE e SENHA_TESTE não estão configuradas.');
+      throw new Error(
+        'As variáveis de ambiente EMAIL_TESTE e SENHA_TESTE não estão configuradas.'
+      );
     }
-    
+
     await monkeytypePage.verifyTitle('Login | Monkeytype');
 
     await monkeytypePage.fazerLogin(EMAIL_TESTE, SENHA_TESTE);
